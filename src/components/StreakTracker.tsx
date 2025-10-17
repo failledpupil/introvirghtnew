@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { format, startOfDay, subDays, differenceInDays } from 'date-fns';
 import { cn } from '../utils/cn';
 import { useDiaryStore } from '../stores/diaryStore';
+import { motion } from 'framer-motion';
+import { AnimatedCounter } from './animations/AnimatedCounter';
+import { ScrollReveal } from './animations/ScrollReveal';
+import { staggerContainer, listItem } from '../utils/animations/motionVariants';
 
 
 interface Milestone {
