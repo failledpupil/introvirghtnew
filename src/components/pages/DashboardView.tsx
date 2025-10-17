@@ -415,7 +415,6 @@ export function DashboardView() {
         onClose={handleCloseCelebration}
         onShare={handleShareMilestone}
       />
-      </div>
-    </PageTransition>
+    </motion.div>
   );
 }
