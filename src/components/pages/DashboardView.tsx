@@ -350,35 +350,63 @@ export function DashboardView() {
 
           {/* Mood Insights Toggle */}
           {entries.length > 0 && (
-            <VAPICard className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <VAPIText as="h3" type="accent" className="text-lg font-script">
-                  Mood Insights
-                </VAPIText>
-                <VAPIButton
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowMoodInsights(!showMoodInsights)}
-                >
-                  {showMoodInsights ? 'Hide' : 'Show'}
-                </VAPIButton>
-              </div>
-              
-              {showMoodInsights ? (
-                <div className="max-h-96 overflow-y-auto">
-                  <MoodVisualization entries={entries} />
-                </div>
-              ) : (
-                <div className="text-center py-4">
-                  <div className="text-3xl mb-2">💭</div>
-                  <VAPIText type="muted" className="text-sm">
-                    Discover patterns in your emotional journey
+            <ScrollReveal delay={300}>
+              <VAPICard className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <VAPIText as="h3" type="accent" className="text-lg font-script">
+                    Mood Insights
                   </VAPIText>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <VAPIButton
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setShowMoodInsights(!showMoodInsights)}
+                    >
+                      {showMoodInsights ? 'Hide' : 'Show'}
+                    </VAPIButton>
+                  </motion.div>
                 </div>
-              )}
-            </VAPICard>
+                
+                {showMoodInsights ? (
+                  <motion.div 
+                    className="max-h-96 overflow-y-auto"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <MoodVisualization entries={entries} />
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    className="text-center py-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <motion.div 
+                      className="text-3xl mb-2"
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 5, -5, 0]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      💭
+                    </motion.div>
+                    <VAPIText type="muted" className="text-sm">
+                      Discover patterns in your emotional journey
+                    </VAPIText>
+                  </motion.div>
+                )}
+              </VAPICard>
+            </ScrollReveal>
           )}
-        </div>
+        </motion.div>
       </div>
 
       {/* Milestone Celebration Modal */}
