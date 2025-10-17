@@ -264,28 +264,46 @@ export function StreakTracker({ onMilestoneAchieved, showCelebration = true, cla
         </div>
 
         {/* Streak Visualization */}
-        <div className="flex justify-center mb-6">
+        <motion.div 
+          className="flex justify-center mb-6"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="animate"
+        >
           <div className="flex gap-1">
             {Array.from({ length: Math.min(stats.currentStreak, 30) }, (_, i) => (
-              <div
+              <motion.div
                 key={i}
                 className={cn(
-                  'w-3 h-3 rounded-full animate-fade-in',
+                  'w-3 h-3 rounded-full',
                   i < 7 ? 'bg-green-400' :
                   i < 14 ? 'bg-blue-400' :
                   i < 30 ? 'bg-purple-400' :
                   'bg-yellow-400'
                 )}
-                style={{ animationDelay: `${i * 50}ms` }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ 
+                  delay: i * 0.03,
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 30
+                }}
+                whileHover={{ scale: 1.5 }}
               />
             ))}
             {stats.currentStreak > 30 && (
-              <div className="flex items-center ml-2 text-sm text-pencil-graphite/70">
+              <motion.div 
+                className="flex items-center ml-2 text-sm text-pencil-graphite/70"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+              >
                 +{stats.currentStreak - 30} more
-              </div>
+              </motion.div>
             )}
           </div>
-        </div>
+        </motion.div>
 
         {/* Quick Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
