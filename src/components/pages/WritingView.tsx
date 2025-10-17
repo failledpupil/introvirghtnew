@@ -4,6 +4,10 @@ import { astraServiceDirect } from '../../services/astraServiceDirect';
 import { VAPICard, VAPIText, VAPIButton } from '../ui';
 import { useVAPITheme } from '../../hooks/useVAPITheme';
 import { cn } from '../../utils/cn';
+import { motion } from 'framer-motion';
+import { AnimatedCounter } from '../animations/AnimatedCounter';
+import { TypewriterText } from '../animations/TypewriterText';
+import { fadeInUp } from '../../utils/animations/motionVariants';
 import type { DiaryEntry } from '../../types';
 
 export function WritingView() {
