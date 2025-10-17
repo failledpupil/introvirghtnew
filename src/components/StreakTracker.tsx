@@ -230,17 +230,37 @@ export function StreakTracker({ onMilestoneAchieved, showCelebration = true, cla
       )}
 
       {/* Main Streak Display */}
-      <div className="bg-aged-paper border border-notebook-lines rounded-lg p-6 mb-6">
+      <motion.div 
+        className="bg-aged-paper border border-notebook-lines rounded-lg p-6 mb-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="text-center mb-6">
-          <div className="text-6xl font-bold text-fountain-pen-blue mb-2 animate-counter">
-            {stats.currentStreak}
-          </div>
-          <div className="text-lg font-script text-pencil-graphite mb-2">
+          <motion.div 
+            className="text-6xl font-bold text-fountain-pen-blue mb-2"
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
+          >
+            <AnimatedCounter value={stats.currentStreak} duration={1500} />
+          </motion.div>
+          <motion.div 
+            className="text-lg font-script text-pencil-graphite mb-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
             Day Writing Streak
-          </div>
-          <p className="text-sm text-pencil-graphite/70">
+          </motion.div>
+          <motion.p 
+            className="text-sm text-pencil-graphite/70"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+          >
             {getStreakMessage()}
-          </p>
+          </motion.p>
         </div>
 
         {/* Streak Visualization */}
