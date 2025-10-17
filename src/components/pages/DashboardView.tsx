@@ -83,10 +83,25 @@ export function DashboardView() {
   };
 
   return (
-    <PageTransition variant="fade">
-      <div className="max-w-7xl mx-auto">
+    <motion.div 
+      className="max-w-7xl mx-auto"
+      initial="initial"
+      animate="animate"
+      variants={fadeInUp}
+    >
+      {/* Floating Particles Background */}
+      {!vapi.isActive && <FloatingParticles count={15} />}
+      
+      {/* Confetti for achievements */}
+      <Confetti show={showConfetti} particleCount={100} />
+      
       {/* Welcome Header */}
-      <div className="mb-8 flex items-center justify-between">
+      <motion.div 
+        className="mb-8 flex items-center justify-between"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+      >
         <div>
           <VAPIText 
             as="h1" 
@@ -113,7 +128,7 @@ export function DashboardView() {
             )}
           />
         </div>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content - Today's Entry */}
