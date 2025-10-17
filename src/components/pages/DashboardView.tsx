@@ -56,6 +56,8 @@ export function DashboardView() {
 
   const handleMilestoneAchieved = (milestone: Milestone) => {
     setCelebratingMilestone(milestone);
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 3000);
   };
 
   const handleCloseCelebration = () => {
