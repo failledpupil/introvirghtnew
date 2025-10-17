@@ -132,7 +132,12 @@ export function DashboardView() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content - Today's Entry */}
-        <div className="lg:col-span-2">
+        <motion.div 
+          className="lg:col-span-2"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <TodaysEntry 
             onEntryClick={handleTodaysEntryClick}
             className="mb-8"
@@ -140,92 +145,107 @@ export function DashboardView() {
 
           {/* Recent Entries */}
           {recentEntries.length > 0 && (
-            <VAPICard className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <VAPIText as="h2" type="accent" className="text-xl font-script">
-                  Recent Entries
-                </VAPIText>
-                <VAPIButton
-                  variant="ghost"
-                  size="sm"
-                  onClick={handleViewAllEntries}
-                >
-                  View All →
-                </VAPIButton>
-              </div>
-
-              <div className="space-y-3">
-                {recentEntries.map((entry) => (
-                  <button
-                    key={entry.id}
-                    onClick={() => navigate('/write')} // Could be enhanced to navigate to specific entry
-                    className={cn(
-                      "w-full text-left p-3 rounded-lg border transition-all duration-200",
-                      vapi.isActive
-                        ? "border-vapi-border-secondary hover:border-vapi-accent-primary hover:bg-vapi-accent-primary/5"
-                        : "border-notebook-lines hover:border-fountain-pen-blue/50 hover:bg-fountain-pen-blue/5"
-                    )}
+            <ScrollReveal delay={300}>
+              <VAPICard className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <VAPIText as="h2" type="accent" className="text-xl font-script">
+                    Recent Entries
+                  </VAPIText>
+                  <VAPIButton
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleViewAllEntries}
                   >
-                    <div className="flex items-center justify-between mb-2">
-                      <VAPIText type="primary" className="font-medium">
-                        {format(entry.date, 'EEEE, MMM d')}
-                      </VAPIText>
-                      <div className="flex items-center gap-3 text-xs">
-                        <VAPIText type="muted" className="text-xs">
-                          {entry.wordCount} words
-                        </VAPIText>
-                        {entry.emotions.length > 0 && (
-                          <div className="flex items-center gap-1">
-                            <VAPIText type="muted" className="text-xs">
-                              {entry.emotions.length}
-                            </VAPIText>
-                            <span>😊</span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    
-                    {entry.content && (
-                      <VAPIText type="secondary" className="text-sm leading-relaxed line-clamp-2">
-                        {entry.content.length > 120 
-                          ? entry.content.substring(0, 120) + '...'
-                          : entry.content
-                        }
-                      </VAPIText>
-                    )}
+                    View All →
+                  </VAPIButton>
+                </div>
 
-                    {entry.emotions.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {entry.emotions.slice(0, 3).map((emotion) => (
-                          <span
-                            key={emotion.id}
-                            className={cn(
-                              "inline-flex items-center gap-1 px-2 py-1 rounded text-xs",
-                              vapi.isActive
-                                ? "bg-vapi-accent-primary/10 text-vapi-accent-primary"
-                                : "bg-fountain-pen-blue/10 text-fountain-pen-blue"
-                            )}
-                          >
-                            <div
-                              className="w-2 h-2 rounded-full"
-                              style={{ backgroundColor: emotion.color }}
-                            />
-                            {emotion.name}
-                          </span>
-                        ))}
-                        {entry.emotions.length > 3 && (
-                          <VAPIText type="muted" className="text-xs">
-                            +{entry.emotions.length - 3}
-                          </VAPIText>
-                        )}
-                      </div>
-                    )}
-                  </button>
-                ))}
-              </div>
-            </VAPICard>
+                <motion.div 
+                  className="space-y-3"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate="animate"
+                >
+                  {recentEntries.map((entry, index) => (
+                    <motion.div
+                      key={entry.id}
+                      variants={listItem}
+                      whileHover={{ scale: 1.02, x: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <AnimatedCard hoverEffect="lift">
+                        <button
+                          onClick={() => navigate('/write')}
+                          className={cn(
+                            "w-full text-left p-3 rounded-lg border transition-all duration-200",
+                            vapi.isActive
+                              ? "border-vapi-border-secondary hover:border-vapi-accent-primary hover:bg-vapi-accent-primary/5"
+                              : "border-notebook-lines hover:border-fountain-pen-blue/50 hover:bg-fountain-pen-blue/5"
+                          )}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <VAPIText type="primary" className="font-medium">
+                              {format(entry.date, 'EEEE, MMM d')}
+                            </VAPIText>
+                            <div className="flex items-center gap-3 text-xs">
+                              <VAPIText type="muted" className="text-xs">
+                                {entry.wordCount} words
+                              </VAPIText>
+                              {entry.emotions.length > 0 && (
+                                <div className="flex items-center gap-1">
+                                  <VAPIText type="muted" className="text-xs">
+                                    {entry.emotions.length}
+                                  </VAPIText>
+                                  <span>😊</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          
+                          {entry.content && (
+                            <VAPIText type="secondary" className="text-sm leading-relaxed line-clamp-2">
+                              {entry.content.length > 120 
+                                ? entry.content.substring(0, 120) + '...'
+                                : entry.content
+                              }
+                            </VAPIText>
+                          )}
+
+                          {entry.emotions.length > 0 && (
+                            <div className="flex flex-wrap gap-1 mt-2">
+                              {entry.emotions.slice(0, 3).map((emotion) => (
+                                <span
+                                  key={emotion.id}
+                                  className={cn(
+                                    "inline-flex items-center gap-1 px-2 py-1 rounded text-xs",
+                                    vapi.isActive
+                                      ? "bg-vapi-accent-primary/10 text-vapi-accent-primary"
+                                      : "bg-fountain-pen-blue/10 text-fountain-pen-blue"
+                                  )}
+                                >
+                                  <div
+                                    className="w-2 h-2 rounded-full"
+                                    style={{ backgroundColor: emotion.color }}
+                                  />
+                                  {emotion.name}
+                                </span>
+                              ))}
+                              {entry.emotions.length > 3 && (
+                                <VAPIText type="muted" className="text-xs">
+                                  +{entry.emotions.length - 3}
+                                </VAPIText>
+                              )}
+                            </div>
+                          )}
+                        </button>
+                      </AnimatedCard>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </VAPICard>
+            </ScrollReveal>
           )}
-        </div>
+        </motion.div>
 
         {/* Sidebar */}
         <div className="lg:col-span-1 space-y-6">
