@@ -248,81 +248,105 @@ export function DashboardView() {
         </motion.div>
 
         {/* Sidebar */}
-        <div className="lg:col-span-1 space-y-6">
+        <motion.div 
+          className="lg:col-span-1 space-y-6"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
           {/* Streak Tracker */}
-          <StreakTracker 
-            onMilestoneAchieved={handleMilestoneAchieved}
-            showCelebration={false} // We'll handle celebration in the modal
-          />
+          <ScrollReveal delay={100}>
+            <StreakTracker 
+              onMilestoneAchieved={handleMilestoneAchieved}
+              showCelebration={false}
+            />
+          </ScrollReveal>
 
           {/* Quick Actions */}
-          <VAPICard className="p-6">
-            <VAPIText as="h3" type="accent" className="text-lg font-script mb-4">
-              Quick Actions
-            </VAPIText>
-            
-            <div className="space-y-3">
-              <VAPIButton
-                variant="ghost"
-                onClick={() => navigate('/write')}
-                className="w-full flex items-center gap-3 p-3 text-left justify-start"
-              >
-                <span className="text-lg">✍️</span>
-                <div>
-                  <VAPIText type="primary" className="font-medium">Start Writing</VAPIText>
-                  <VAPIText type="muted" className="text-xs">Begin today's entry</VAPIText>
-                </div>
-              </VAPIButton>
+          <ScrollReveal delay={200}>
+            <VAPICard className="p-6">
+              <VAPIText as="h3" type="accent" className="text-lg font-script mb-4">
+                Quick Actions
+              </VAPIText>
               
-              <VAPIButton
-                variant="ghost"
-                onClick={handleViewAllEntries}
-                className="w-full flex items-center gap-3 p-3 text-left justify-start"
+              <motion.div 
+                className="space-y-3"
+                variants={staggerContainer}
+                initial="hidden"
+                animate="animate"
               >
-                <span className="text-lg">📚</span>
-                <div>
-                  <VAPIText type="primary" className="font-medium">Browse Entries</VAPIText>
-                  <VAPIText type="muted" className="text-xs">View past writings</VAPIText>
-                </div>
-              </VAPIButton>
-              
-              <VAPIButton
-                variant="ghost"
-                onClick={() => navigate('/search')}
-                className="w-full flex items-center gap-3 p-3 text-left justify-start"
-              >
-                <span className="text-lg">🔍</span>
-                <div>
-                  <VAPIText type="primary" className="font-medium">Search</VAPIText>
-                  <VAPIText type="muted" className="text-xs">Find specific entries</VAPIText>
-                </div>
-              </VAPIButton>
-              
-              <VAPIButton
-                variant="ghost"
-                onClick={handleViewAnalytics}
-                className="w-full flex items-center gap-3 p-3 text-left justify-start"
-              >
-                <span className="text-lg">📊</span>
-                <div>
-                  <VAPIText type="primary" className="font-medium">Insights</VAPIText>
-                  <VAPIText type="muted" className="text-xs">View your patterns</VAPIText>
-                </div>
-              </VAPIButton>
-              
-              <VAPIButton
-                variant="ghost"
-                onClick={() => navigate('/assistant')}
-                className="w-full flex items-center gap-3 p-3 text-left justify-start"
-              >
-                <span className="text-lg">🤖</span>
-                <div>
-                  <VAPIText type="primary" className="font-medium">AI Assistant</VAPIText>
-                  <VAPIText type="muted" className="text-xs">Chat about your entries</VAPIText>
-                </div>
-              </VAPIButton>
-            </div>
-          </VAPICard>
+                <motion.div variants={listItem} whileHover={{ scale: 1.02, x: 5 }}>
+                  <VAPIButton
+                    variant="ghost"
+                    onClick={() => navigate('/write')}
+                    className="w-full flex items-center gap-3 p-3 text-left justify-start"
+                  >
+                    <span className="text-lg">✍️</span>
+                    <div>
+                      <VAPIText type="primary" className="font-medium">Start Writing</VAPIText>
+                      <VAPIText type="muted" className="text-xs">Begin today's entry</VAPIText>
+                    </div>
+                  </VAPIButton>
+                </motion.div>
+                
+                <motion.div variants={listItem} whileHover={{ scale: 1.02, x: 5 }}>
+                  <VAPIButton
+                    variant="ghost"
+                    onClick={handleViewAllEntries}
+                    className="w-full flex items-center gap-3 p-3 text-left justify-start"
+                  >
+                    <span className="text-lg">📚</span>
+                    <div>
+                      <VAPIText type="primary" className="font-medium">Browse Entries</VAPIText>
+                      <VAPIText type="muted" className="text-xs">View past writings</VAPIText>
+                    </div>
+                  </VAPIButton>
+                </motion.div>
+                
+                <motion.div variants={listItem} whileHover={{ scale: 1.02, x: 5 }}>
+                  <VAPIButton
+                    variant="ghost"
+                    onClick={() => navigate('/search')}
+                    className="w-full flex items-center gap-3 p-3 text-left justify-start"
+                  >
+                    <span className="text-lg">🔍</span>
+                    <div>
+                      <VAPIText type="primary" className="font-medium">Search</VAPIText>
+                      <VAPIText type="muted" className="text-xs">Find specific entries</VAPIText>
+                    </div>
+                  </VAPIButton>
+                </motion.div>
+                
+                <motion.div variants={listItem} whileHover={{ scale: 1.02, x: 5 }}>
+                  <VAPIButton
+                    variant="ghost"
+                    onClick={handleViewAnalytics}
+                    className="w-full flex items-center gap-3 p-3 text-left justify-start"
+                  >
+                    <span className="text-lg">📊</span>
+                    <div>
+                      <VAPIText type="primary" className="font-medium">Insights</VAPIText>
+                      <VAPIText type="muted" className="text-xs">View your patterns</VAPIText>
+                    </div>
+                  </VAPIButton>
+                </motion.div>
+                
+                <motion.div variants={listItem} whileHover={{ scale: 1.02, x: 5 }}>
+                  <VAPIButton
+                    variant="ghost"
+                    onClick={() => navigate('/assistant')}
+                    className="w-full flex items-center gap-3 p-3 text-left justify-start"
+                  >
+                    <span className="text-lg">🤖</span>
+                    <div>
+                      <VAPIText type="primary" className="font-medium">AI Assistant</VAPIText>
+                      <VAPIText type="muted" className="text-xs">Chat about your entries</VAPIText>
+                    </div>
+                  </VAPIButton>
+                </motion.div>
+              </motion.div>
+            </VAPICard>
+          </ScrollReveal>
 
           {/* Mood Insights Toggle */}
           {entries.length > 0 && (
