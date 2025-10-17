@@ -306,33 +306,38 @@ export function StreakTracker({ onMilestoneAchieved, showCelebration = true, cla
         </motion.div>
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-          <div>
+        <motion.div 
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="animate"
+        >
+          <motion.div variants={listItem}>
             <div className="text-xl font-bold text-fountain-pen-blue">
-              {stats.longestStreak}
+              <AnimatedCounter value={stats.longestStreak} duration={1000} />
             </div>
             <div className="text-xs text-pencil-graphite/70">Longest Streak</div>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div variants={listItem}>
             <div className="text-xl font-bold text-fountain-pen-blue">
-              {stats.totalEntries}
+              <AnimatedCounter value={stats.totalEntries} duration={1000} />
             </div>
             <div className="text-xs text-pencil-graphite/70">Total Entries</div>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div variants={listItem}>
             <div className="text-xl font-bold text-fountain-pen-blue">
-              {stats.consistencyScore}%
+              <AnimatedCounter value={stats.consistencyScore} suffix="%" duration={1000} />
             </div>
             <div className="text-xs text-pencil-graphite/70">Consistency</div>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div variants={listItem}>
             <div className="text-xl font-bold text-fountain-pen-blue">
-              {stats.averageWordsPerEntry}
+              <AnimatedCounter value={stats.averageWordsPerEntry} duration={1000} />
             </div>
             <div className="text-xs text-pencil-graphite/70">Avg Words</div>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
 
       {/* Next Milestone */}
       {nextMilestone && (
