@@ -1,0 +1,66 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Premium gradients for icon -->
+    <linearGradient id="iconBrainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="50%" style="stop-color:#764ba2"/>
+      <stop offset="100%" style="stop-color:#f093fb"/>
+    </linearGradient>
+    
+    <linearGradient id="iconAccentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    
+    <!-- Glow filter for icon -->
+    <filter id="iconGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Simplified brain for icon size -->
+  <g filter="url(#iconGlow)">
+    <!-- Left hemisphere -->
+    <path d="M20 35 C20 25 25 20 35 20 C40 20 45 22 50 25 C52 27 54 29 56 31 C56 35 56 40 56 45 C56 55 56 65 56 75 C56 85 56 95 56 105 C54 107 52 109 50 111 C45 114 40 116 35 116 C25 116 20 111 20 101 C20 96 22 91 26 87 C22 83 20 78 20 73 C20 68 22 63 26 59 C22 55 20 50 20 45 C20 42 20 38 20 35 Z" 
+          fill="url(#iconBrainGradient)" 
+          stroke="#4a5568" 
+          stroke-width="1.5"/>
+    
+    <!-- Right hemisphere -->
+    <path d="M108 35 C108 25 103 20 93 20 C88 20 83 22 78 25 C76 27 74 29 72 31 C72 35 72 40 72 45 C72 55 72 65 72 75 C72 85 72 95 72 105 C74 107 76 109 78 111 C83 114 88 116 93 116 C103 116 108 111 108 101 C108 96 106 91 102 87 C106 83 108 78 108 73 C108 68 106 63 102 59 C106 55 108 50 108 45 C108 42 108 38 108 35 Z" 
+          fill="url(#iconBrainGradient)" 
+          stroke="#4a5568" 
+          stroke-width="1.5"/>
+    
+    <!-- Central bridge -->
+    <ellipse cx="64" cy="68" rx="8" ry="35" fill="url(#iconAccentGradient)" opacity="0.8"/>
+    
+    <!-- Brain stem -->
+    <rect x="60" y="116" width="8" height="12" rx="4" 
+          fill="url(#iconAccentGradient)" 
+          stroke="#4a5568" 
+          stroke-width="1"/>
+  </g>
+  
+  <!-- Neural pathways for icon -->
+  <g opacity="0.6">
+    <path d="M28 50 C35 48 42 50 48 48" stroke="url(#iconAccentGradient)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <path d="M28 65 C35 63 42 65 48 63" stroke="url(#iconAccentGradient)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <path d="M28 80 C35 78 42 80 48 78" stroke="url(#iconAccentGradient)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    
+    <path d="M100 50 C93 48 86 50 80 48" stroke="url(#iconAccentGradient)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <path d="M100 65 C93 63 86 65 80 63" stroke="url(#iconAccentGradient)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <path d="M100 80 C93 78 86 80 80 78" stroke="url(#iconAccentGradient)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  </g>
+  
+  <!-- Central division -->
+  <line x1="64" y1="31" x2="64" y2="116" stroke="url(#iconAccentGradient)" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Highlights -->
+  <ellipse cx="42" cy="40" rx="6" ry="4" fill="#ffffff" opacity="0.3"/>
+  <ellipse cx="86" cy="40" rx="6" ry="4" fill="#ffffff" opacity="0.3"/>
+</svg>

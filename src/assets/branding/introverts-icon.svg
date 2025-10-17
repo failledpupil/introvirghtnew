@@ -1,0 +1,20 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Brain Icon Only -->
+  <g transform="translate(30, 30)">
+    <!-- Main brain shape -->
+    <path d="M-20,-12 C-28,-12 -32,-4 -32,4 C-32,12 -28,20 -20,20 L20,20 C28,20 32,12 32,4 C32,-4 28,-12 20,-12 Z" 
+          fill="#6B7280" stroke="#000" stroke-width="1.5"/>
+    
+    <!-- Brain sections -->
+    <path d="M-20,-12 C-12,-8 -4,-12 4,-8 C12,-12 20,-12 20,-12 C20,-4 12,0 4,4 C-4,0 -12,-4 -20,-12 Z" 
+          fill="#4A5568" stroke="#000" stroke-width="1.5"/>
+    
+    <!-- Brain stem -->
+    <path d="M-4,20 L4,20 L2,26 L-2,26 Z" 
+          fill="#4A5568" stroke="#000" stroke-width="1.5"/>
+    
+    <!-- Brain details -->
+    <path d="M-16,-4 C-8,0 0,-4 8,0 C16,-4 16,4 8,8 C0,4 -8,8 -16,4 C-16,-4 -16,-4 -16,-4" 
+          fill="none" stroke="#000" stroke-width="1"/>
+  </g>
+</

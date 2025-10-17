@@ -1,0 +1,51 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Introverts Brain Logo -->
+  <defs>
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B7280" />
+      <stop offset="50%" style="stop-color:#4A5568" />
+      <stop offset="100%" style="stop-color:#374151" />
+    </linearGradient>
+    <linearGradient id="brainSectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A5568" />
+      <stop offset="100%" style="stop-color:#2D3748" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Brain shadow -->
+  <ellipse cx="33" cy="33" rx="24" ry="18" fill="#000000" opacity="0.1"/>
+  
+  <!-- Main brain shape -->
+  <path d="M8,32 C8,20 16,12 28,12 L36,12 C48,12 56,20 56,32 C56,44 48,52 36,52 L28,52 C16,52 8,44 8,32 Z" 
+        fill="url(#brainGradient)" 
+        stroke="#374151" 
+        stroke-width="1.5"/>
+  
+  <!-- Brain left hemisphere -->
+  <path d="M8,32 C8,20 16,12 28,12 C32,16 32,24 32,32 C32,40 32,48 28,52 C16,52 8,44 8,32 Z" 
+        fill="url(#brainSectionGradient)" 
+        stroke="#374151" 
+        stroke-width="1"/>
+  
+  <!-- Brain right hemisphere -->
+  <path d="M32,32 C32,20 36,12 36,12 C48,12 56,20 56,32 C56,44 48,52 36,52 C36,48 32,40 32,32 Z" 
+        fill="#6B7280" 
+        stroke="#374151" 
+        stroke-width="1"/>
+  
+  <!-- Brain stem -->
+  <rect x="30" y="52" width="4" height="8" rx="2" fill="#4A5568" stroke="#374151" stroke-width="1"/>
+  
+  <!-- Brain folds and details -->
+  <path d="M12,28 C20,24 24,28 32,24" fill="none" stroke="#374151" stroke-width="1" opacity="0.7"/>
+  <path d="M32,24 C40,28 44,24 52,28" fill="none" stroke="#374151" stroke-width="1" opacity="0.7"/>
+  <path d="M16,36 C24,32 28,36 32,32" fill="none" stroke="#374151" stroke-width="1" opacity="0.7"/>
+  <path d="M32,32 C36,36 40,32 48,36" fill="none" stroke="#374151" stroke-width="1" opacity="0.7"/>
+  
+  <!-- Central division -->
+  <line x1="32" y1="12" x2="32" y2="52" stroke="#374151" stroke-width="1.5" opacity="0.8"/>
+  
+  <!-- Subtle highlights -->
+  <ellipse cx="22" cy="24" rx="3" ry="2" fill="#ffffff" opacity="0.1"/>
+  <ellipse cx="42" cy="24" rx="3" ry="2" fill="#ffffff" opacity="0.1"/>
+</svg>

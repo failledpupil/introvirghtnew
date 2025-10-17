@@ -1,0 +1,444 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium Handwritten Font Variables */
+:root {
+  --font-handwritten-primary: 'Dancing Script', cursive;
+  --font-handwritten-casual: 'Kalam', cursive;
+  --font-handwritten-playful: 'Caveat', cursive;
+  --font-handwritten-bold: 'Amatic SC', cursive;
+  --font-handwritten-natural: 'Patrick Hand', cursive;
+  --font-handwritten-cute: 'Indie Flower', cursive;
+  --font-handwritten-elegant: 'Shadows Into Light', cursive;
+  --font-handwritten-marker: 'Permanent Marker', cursive;
+}
+
+@layer base {
+  /* Essential theme variables */
+  :root {
+    /* VAPI Theme CSS Custom Properties */
+    --vapi-bg-primary: #0a0a0a;
+    --vapi-bg-secondary: #1a1a1a;
+    --vapi-bg-tertiary: #2a2a2a;
+    --vapi-bg-elevated: #333333;
+    
+    --vapi-text-primary: #ffffff;
+    --vapi-text-secondary: #a1a1aa;
+    --vapi-text-muted: #6b7280;
+    --vapi-text-inverse: #000000;
+    
+    --vapi-accent-primary: #14b8a6;
+    --vapi-accent-hover: #0d9488;
+    --vapi-accent-light: #5eead4;
+    --vapi-accent-dark: #0f766e;
+    
+    --vapi-semantic-success: #10b981;
+    --vapi-semantic-warning: #f59e0b;
+    --vapi-semantic-error: #ef4444;
+    --vapi-semantic-info: #3b82f6;
+    
+    --vapi-border-primary: #374151;
+    --vapi-border-secondary: #1f2937;
+    --vapi-border-accent: #14b8a6;
+    
+    /* Animation easing */
+    --ease-natural: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body {
+    @apply bg-cream-paper text-pencil-graphite font-sans min-h-screen;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f5f1e8' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='0.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+  
+  /* VAPI Theme Body Styles */
+  [data-theme^="vapi"] body {
+    background-color: var(--vapi-bg-primary);
+    color: var(--vapi-text-primary);
+    background-image: none;
+  }
+  
+  * {
+    @apply selection:bg-highlighter-yellow selection:text-pencil-graphite;
+  }
+  
+  /* VAPI Theme Selection Colors */
+  [data-theme^="vapi"] *::selection {
+    background-color: var(--vapi-accent-primary);
+    color: var(--vapi-text-inverse);
+  }
+}
+
+@layer components {
+  /* Essential paper styles */
+  .paper-page {
+    @apply bg-cream-paper shadow-paper rounded-sm relative;
+  }
+  
+  [data-theme^="vapi"] .paper-page {
+    background-color: var(--vapi-bg-secondary);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--vapi-border-secondary);
+  }
+  
+  /* Essential text styles */
+  .handwritten-text {
+    @apply font-handwritten text-fountain-pen-blue;
+    text-shadow: 0.5px 0.5px 0px rgba(30, 58, 138, 0.1);
+  }
+  
+  [data-theme^="vapi"] .handwritten-text {
+    color: var(--vapi-text-primary);
+    text-shadow: none;
+  }
+  
+  /* Essential editor styles */
+  .diary-editor-content .ProseMirror {
+    @apply outline-none;
+    min-height: 400px;
+    padding: 1.5rem;
+    line-height: 2.5rem;
+  }
+  
+  .diary-editor-content .ProseMirror.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    @apply text-pencil-graphite/50 pointer-events-none float-left h-0 italic;
+  }
+  
+  [data-theme^="vapi"] .diary-editor-content .ProseMirror {
+    background-color: var(--vapi-bg-secondary);
+    color: var(--vapi-text-primary);
+    border: 1px solid var(--vapi-border-secondary);
+    border-radius: 8px;
+  }
+  
+  [data-theme^="vapi"] .diary-editor-content .ProseMirror.is-editor-empty:first-child::before {
+    color: var(--vapi-text-muted);
+  }
+}
+
+@layer utilities {
+  /* Essential animations */
+  .animate-page-enter {
+    animation: pageEnter 0.5s var(--ease-smooth) forwards;
+  }
+  
+  .animate-modal-enter {
+    animation: modalEnter 0.4s var(--ease-bounce) forwards;
+  }
+  
+  .animate-text-appear {
+    animation: textAppear 0.6s var(--ease-natural) forwards;
+  }
+  
+  .animate-handwriting {
+    animation: handwriting 0.8s var(--ease-natural) forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.6s var(--ease-natural) forwards;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.6s var(--ease-bounce) forwards;
+  }
+  
+  .animate-focus-ring {
+    animation: focusRing 2s var(--ease-smooth) infinite;
+  }
+  
+  /* Essential keyframes */
+  @keyframes pageEnter {
+    0% {
+      opacity: 0;
+      transform: translateX(30px) scale(0.98);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+  
+  @keyframes modalEnter {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  @keyframes textAppear {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes handwriting {
+    0% {
+      opacity: 0;
+      transform: translateX(-5px) scale(0.98);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes focusRing {
+    0% {
+      box-shadow: 0 0 0 0 rgba(30, 58, 138, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(30, 58, 138, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(30, 58, 138, 0);
+    }
+  }
+  
+  /* Essential utility classes */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}/* Enha
+nced Logo Styles */
+.logo {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enhanced logo effects */
+.vapi-logo-glow {
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+}
+
+/* Logo hover effects */
+.logo:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Logo container for better positioning */
+.logo-container {
+  @apply flex items-center justify-center;
+  @apply p-1 rounded-lg;
+  @apply transition-all duration-200;
+}
+
+.logo-container:hover {
+  @apply bg-gray-50 dark:bg-gray-800/50;
+}/* Premi
+um Logo Enhancements */
+.logo:hover {
+  transform: scale(1.05) rotate(1deg);
+  filter: brightness(1.1) contrast(1.1) drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+}
+
+.logo-container:hover {
+  transform: translateY(-2px);
+}
+
+/* Breathing animation for logo */
+@keyframes logo-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.logo-breathe {
+  animation: logo-breathe 4s ease-in-out infinite;
+}
+
+/* Premium glow pulse */
+@keyframes logo-glow-pulse {
+  0%, 100% { 
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4));
+  }
+  50% { 
+    filter: drop-shadow(0 0 16px rgba(59, 130, 246, 0.8)) 
+            drop-shadow(0 0 32px rgba(59, 130, 246, 0.4));
+  }
+}
+
+.logo-glow-pulse {
+  animation: logo-glow-pulse 3s ease-in-out infinite;
+}/*
+ Premium Handwritten Typography Classes */
+.font-handwritten {
+  font-family: var(--font-handwritten-primary);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.font-handwritten-casual {
+  font-family: var(--font-handwritten-casual);
+  font-weight: 400;
+}
+
+.font-handwritten-playful {
+  font-family: var(--font-handwritten-playful);
+  font-weight: 500;
+}
+
+.font-handwritten-bold {
+  font-family: var(--font-handwritten-bold);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.font-handwritten-natural {
+  font-family: var(--font-handwritten-natural);
+  font-weight: 400;
+}
+
+.font-handwritten-cute {
+  font-family: var(--font-handwritten-cute);
+  font-weight: 400;
+}
+
+.font-handwritten-elegant {
+  font-family: var(--font-handwritten-elegant);
+  font-weight: 400;
+}
+
+.font-handwritten-marker {
+  font-family: var(--font-handwritten-marker);
+  font-weight: 400;
+}
+
+/* Enhanced Typography Styles - Reduced Sizes */
+.text-handwritten-xl {
+  @apply font-handwritten text-2xl leading-relaxed;
+}
+
+.text-handwritten-lg {
+  @apply font-handwritten text-xl leading-relaxed;
+}
+
+.text-handwritten-md {
+  @apply font-handwritten text-lg leading-relaxed;
+}
+
+.text-handwritten-sm {
+  @apply font-handwritten text-base leading-relaxed;
+}
+
+/* Brand Typography - Smaller */
+.brand-title {
+  @apply font-handwritten-playful text-xl font-semibold;
+  color: #2563eb;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.brand-subtitle {
+  @apply font-handwritten-elegant text-base;
+  color: #64748b;
+}
+
+/* Page Headers - Reduced */
+.page-title {
+  @apply font-handwritten-bold text-2xl;
+  color: #1e40af;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.section-title {
+  @apply font-handwritten-playful text-xl font-medium;
+  color: #3730a3;
+}
+
+/* Navigation & UI - Original Sizes */
+.nav-text {
+  @apply font-handwritten-natural text-sm font-medium;
+}
+
+.button-text {
+  @apply font-handwritten-casual text-sm font-medium;
+}
+
+/* Content Typography - Standard */
+.content-handwritten {
+  @apply font-handwritten-casual text-sm leading-relaxed;
+  line-height: 1.6;
+}
+
+.greeting-text {
+  @apply font-handwritten-elegant text-sm;
+  color: #6b7280;
+}
+
+/* Special Effects */
+.handwritten-glow {
+  text-shadow: 0 0 10px rgba(37, 99, 235, 0.3),
+               0 0 20px rgba(37, 99, 235, 0.2),
+               0 0 30px rgba(37, 99, 235, 0.1);
+}
+
+.handwritten-shadow {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.15),
+               1px 1px 2px rgba(0,0,0,0.1);
+}

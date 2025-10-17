@@ -1,0 +1,33 @@
+{
+  "allow": [
+    "simple",
+    "easy",
+    "just",
+    "obvious",
+    "clearly",
+    "simply",
+    "normal",
+    "default",
+    "master",
+    "native"
+  ],
+  "profanitySureness": 1,
+  "noBinary": false,
+  "ignore": [
+    "node_modules/**",
+    "dist/**",
+    "build/**",
+    ".git/**",
+    "*.min.js",
+    "*.map",
+    "package-lock.json",
+    "yarn.lock",
+    "*.svg",
+    "*.png",
+    "*.jpg",
+    "*.jpeg",
+    "*.gif",
+    "CHANGELOG.md",
+    "LICENSE"
+  ]
+}

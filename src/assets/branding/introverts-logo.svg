@@ -1,0 +1,28 @@
+<svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Brain Icon -->
+  <g transform="translate(100, 35)">
+    <!-- Main brain shape -->
+    <path d="M-25,-15 C-35,-15 -40,-5 -40,5 C-40,15 -35,25 -25,25 L25,25 C35,25 40,15 40,5 C40,-5 35,-15 25,-15 Z" 
+          fill="#6B7280" stroke="#000" stroke-width="2"/>
+    
+    <!-- Brain sections -->
+    <path d="M-25,-15 C-15,-10 -5,-15 5,-10 C15,-15 25,-15 25,-15 C25,-5 15,0 5,5 C-5,0 -15,-5 -25,-15 Z" 
+          fill="#4A5568" stroke="#000" stroke-width="2"/>
+    
+    <!-- Brain stem -->
+    <path d="M-5,25 L5,25 L3,35 L-3,35 Z" 
+          fill="#4A5568" stroke="#000" stroke-width="2"/>
+    
+    <!-- Brain details -->
+    <path d="M-20,-5 C-10,0 0,-5 10,0 C20,-5 20,5 10,10 C0,5 -10,10 -20,5 C-20,-5 -20,-5 -20,-5" 
+          fill="none" stroke="#000" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="100" y="85" text-anchor="middle" 
+        font-family="Arial, sans-serif" 
+        font-size="18" 
+        font-weight="bold" 
+        fill="#4A5568" 
+        letter-spacing="2px">INTROVERTS</text>
+</svg>

@@ -1,0 +1,156 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Premium gradients -->
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="50%" style="stop-color:#764ba2"/>
+      <stop offset="100%" style="stop-color:#f093fb"/>
+    </linearGradient>
+    
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    
+    <linearGradient id="shadowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000" stop-opacity="0.3"/>
+      <stop offset="100%" style="stop-color:#000000" stop-opacity="0.1"/>
+    </linearGradient>
+    
+    <!-- Filters for premium effects -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="2" dy="2"/>
+      <feGaussianBlur stdDeviation="3" result="offset-blur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.2"/>
+      <feComposite in2="offset-blur" operator="in"/>
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle with subtle gradient -->
+  <circle cx="256" cy="256" r="240" fill="url(#shadowGradient)" opacity="0.1"/>
+  
+  <!-- Main brain structure - premium design -->
+  <g filter="url(#glow)">
+    <!-- Left hemisphere -->
+    <path d="M120 180 C120 140 140 120 180 120 C200 120 220 125 240 135 C245 140 250 145 256 150 C256 160 256 170 256 180 C256 220 256 260 256 300 C256 340 256 380 256 420 C250 425 245 430 240 435 C220 445 200 450 180 450 C140 450 120 430 120 390 C120 370 125 350 135 330 C125 310 120 290 120 270 C120 250 125 230 135 210 C125 200 120 190 120 180 Z" 
+          fill="url(#brainGradient)" 
+          stroke="#4a5568" 
+          stroke-width="3"
+          filter="url(#innerShadow)"/>
+    
+    <!-- Right hemisphere -->
+    <path d="M392 180 C392 140 372 120 332 120 C312 120 292 125 272 135 C267 140 262 145 256 150 C256 160 256 170 256 180 C256 220 256 260 256 300 C256 340 256 380 256 420 C262 425 267 430 272 435 C292 445 312 450 332 450 C372 450 392 430 392 390 C392 370 387 350 377 330 C387 310 392 290 392 270 C392 250 387 230 377 210 C387 200 392 190 392 180 Z" 
+          fill="url(#brainGradient)" 
+          stroke="#4a5568" 
+          stroke-width="3"
+          filter="url(#innerShadow)"/>
+    
+    <!-- Central connecting bridge -->
+    <ellipse cx="256" cy="285" rx="25" ry="120" fill="url(#accentGradient)" opacity="0.8"/>
+    
+    <!-- Brain stem -->
+    <rect x="240" y="450" width="32" height="50" rx="16" 
+          fill="url(#accentGradient)" 
+          stroke="#4a5568" 
+          stroke-width="2"/>
+  </g>
+  
+  <!-- Premium brain details and neural pathways -->
+  <g opacity="0.7">
+    <!-- Left hemisphere details -->
+    <path d="M140 200 C160 195 180 200 200 195 C220 190 235 195 250 190" 
+          stroke="url(#accentGradient)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none"/>
+    <path d="M140 240 C160 235 180 240 200 235 C220 230 235 235 250 230" 
+          stroke="url(#accentGradient)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none"/>
+    <path d="M140 280 C160 275 180 280 200 275 C220 270 235 275 250 270" 
+          stroke="url(#accentGradient)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none"/>
+    <path d="M140 320 C160 315 180 320 200 315 C220 310 235 315 250 310" 
+          stroke="url(#accentGradient)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none"/>
+    <path d="M140 360 C160 355 180 360 200 355 C220 350 235 355 250 350" 
+          stroke="url(#accentGradient)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none"/>
+    
+    <!-- Right hemisphere details -->
+    <path d="M372 200 C352 195 332 200 312 195 C292 190 277 195 262 190" 
+          stroke="url(#accentGradient)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none"/>
+    <path d="M372 240 C352 235 332 240 312 235 C292 230 277 235 262 230" 
+          stroke="url(#accentGradient)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none"/>
+    <path d="M372 280 C352 275 332 280 312 275 C292 270 277 275 262 270" 
+          stroke="url(#accentGradient)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none"/>
+    <path d="M372 320 C352 315 332 320 312 315 C292 310 277 315 262 310" 
+          stroke="url(#accentGradient)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none"/>
+    <path d="M372 360 C352 355 332 360 312 355 C292 350 277 355 262 350" 
+          stroke="url(#accentGradient)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none"/>
+  </g>
+  
+  <!-- Neural connection nodes -->
+  <g fill="url(#accentGradient)">
+    <circle cx="180" cy="200" r="4" opacity="0.8"/>
+    <circle cx="200" cy="240" r="4" opacity="0.8"/>
+    <circle cx="180" cy="280" r="4" opacity="0.8"/>
+    <circle cx="200" cy="320" r="4" opacity="0.8"/>
+    <circle cx="180" cy="360" r="4" opacity="0.8"/>
+    
+    <circle cx="332" cy="200" r="4" opacity="0.8"/>
+    <circle cx="312" cy="240" r="4" opacity="0.8"/>
+    <circle cx="332" cy="280" r="4" opacity="0.8"/>
+    <circle cx="312" cy="320" r="4" opacity="0.8"/>
+    <circle cx="332" cy="360" r="4" opacity="0.8"/>
+  </g>
+  
+  <!-- Central division line with gradient -->
+  <line x1="256" y1="150" x2="256" y2="450" 
+        stroke="url(#accentGradient)" 
+        stroke-width="2" 
+        opacity="0.6"/>
+  
+  <!-- Premium highlights -->
+  <g opacity="0.3">
+    <ellipse cx="200" cy="180" rx="20" ry="15" fill="#ffffff"/>
+    <ellipse cx="312" cy="180" rx="20" ry="15" fill="#ffffff"/>
+  </g>
+  
+  <!-- Subtle outer glow -->
+  <circle cx="256" cy="285" r="200" fill="none" stroke="url(#accentGradient)" stroke-width="1" opacity="0.2"/>
+</svg>
