@@ -106,9 +106,19 @@ export function WritingView() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <motion.div 
+      className="max-w-4xl mx-auto p-6"
+      initial="initial"
+      animate="animate"
+      variants={fadeInUp}
+    >
       {/* Header */}
-      <div className="mb-8 text-center">
+      <motion.div 
+        className="mb-8 text-center"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
         <VAPIText as="h1" type="accent" className="text-3xl font-bold mb-2">
           {new Date().toLocaleDateString('en-US', { 
             weekday: 'long', 
@@ -120,67 +130,107 @@ export function WritingView() {
         <VAPIText type="secondary" className="mb-4">
           What's on your mind today?
         </VAPIText>
-      </div>
+      </motion.div>
 
       {/* Writing Area */}
-      <VAPICard className="p-8 min-h-[500px]">
-        <textarea
-          value={content}
-          onChange={handleContentChange}
-          placeholder="Start writing your thoughts..."
-          className={cn(
-            "w-full min-h-[400px] p-4 border-none outline-none resize-none text-lg leading-relaxed",
-            vapi.isActive 
-              ? "bg-transparent text-vapi-text-primary placeholder:text-vapi-text-muted"
-              : "bg-white text-gray-900 placeholder:text-gray-500"
-          )}
-          style={{
-            fontFamily: vapi.isActive ? 'Inter, sans-serif' : 'Georgia, serif',
-            lineHeight: '1.8'
-          }}
-        />
-        
-        {/* Stats */}
-        <div className={cn(
-          "mt-6 pt-4 border-t",
-          vapi.isActive ? "border-vapi-border-secondary" : "border-gray-200"
-        )}>
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-4">
-              <VAPIText type="muted" className="text-sm">
-                {wordCount} words
-              </VAPIText>
-              <VAPIText type="muted" className="text-sm">
-                Created {currentEntry.createdAt.toLocaleDateString()}
-              </VAPIText>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <VAPICard className="p-8 min-h-[500px]">
+          <motion.textarea
+            value={content}
+            onChange={handleContentChange}
+            placeholder="Start writing your thoughts..."
+            className={cn(
+              "w-full min-h-[400px] p-4 border-none outline-none resize-none text-lg leading-relaxed",
+              vapi.isActive 
+                ? "bg-transparent text-vapi-text-primary placeholder:text-vapi-text-muted"
+                : "bg-white text-gray-900 placeholder:text-gray-500"
+            )}
+            style={{
+              fontFamily: vapi.isActive ? 'Inter, sans-serif' : 'Georgia, serif',
+              lineHeight: '1.8'
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.4 }}
+          />
+          
+          {/* Stats */}
+          <motion.div 
+            className={cn(
+              "mt-6 pt-4 border-t",
+              vapi.isActive ? "border-vapi-border-secondary" : "border-gray-200"
+            )}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center gap-4">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <VAPIText type="muted" className="text-sm">
+                    <AnimatedCounter value={wordCount} /> words
+                  </VAPIText>
+                </motion.div>
+                <VAPIText type="muted" className="text-sm">
+                  Created {currentEntry.createdAt.toLocaleDateString()}
+                </VAPIText>
+              </div>
+              <div className="flex items-center gap-3">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ 
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 30,
+                    delay: 0.8
+                  }}
+                >
+                  <VAPIText 
+                    type="accent" 
+                    className={cn(
+                      "text-sm",
+                      vapi.isActive ? "" : "text-green-600"
+                    )}
+                  >
+                    ✓ Auto-saved
+                  </VAPIText>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <VAPIButton
+                    size="sm"
+                    onClick={manualSyncToAstra}
+                    disabled={!content.trim()}
+                    className="text-xs"
+                  >
+                    🔄 Sync to AstraDB
+                  </VAPIButton>
+                </motion.div>
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              <VAPIText 
-                type="accent" 
-                className={cn(
-                  "text-sm",
-                  vapi.isActive ? "" : "text-green-600"
-                )}
+            {syncStatus && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
               >
-                ✓ Auto-saved
-              </VAPIText>
-              <VAPIButton
-                size="sm"
-                onClick={manualSyncToAstra}
-                disabled={!content.trim()}
-                className="text-xs"
-              >
-                🔄 Sync to AstraDB
-              </VAPIButton>
-            </div>
-          </div>
-          {syncStatus && (
-            <VAPIText type="muted" className="mt-2 text-xs">
-              {syncStatus}
-            </VAPIText>
-          )}
-        </div>
-      </VAPICard>
-    </div>
+                <VAPIText type="muted" className="mt-2 text-xs">
+                  {syncStatus}
+                </VAPIText>
+              </motion.div>
+            )}
+          </motion.div>
+        </VAPICard>
+      </motion.div>
+    </motion.div>
   );
 }
