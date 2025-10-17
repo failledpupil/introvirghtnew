@@ -5,6 +5,8 @@ import { AnimatedLogo } from '../branding/AnimatedLogo';
 import { ThemeSelector } from '../ui';
 import { CompanionWidget } from '../ai/CompanionWidget';
 import { useDiaryStore } from '../../stores/diaryStore';
+import { motion, AnimatePresence } from 'framer-motion';
+import { modalBackdrop, modalContent, staggerContainer, listItem } from '../../utils/animations/motionVariants';
 
 import { useVAPITheme } from '../../hooks/useSimpleVAPITheme';
 
