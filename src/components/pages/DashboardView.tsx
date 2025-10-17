@@ -35,6 +35,7 @@ export function DashboardView() {
   const { entries } = useDiaryStore();
   const [showMoodInsights, setShowMoodInsights] = useState(false);
   const [celebratingMilestone, setCelebratingMilestone] = useState<Milestone | null>(null);
+  const [showConfetti, setShowConfetti] = useState(false);
   const vapi = useVAPITheme();
 
   const recentEntries = entries
