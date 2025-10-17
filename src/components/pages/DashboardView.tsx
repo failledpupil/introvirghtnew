@@ -4,7 +4,12 @@ import { TodaysEntry } from '../TodaysEntry';
 import { MoodVisualization } from '../MoodVisualization';
 import { StreakTracker } from '../StreakTracker';
 import { MilestoneCelebration } from '../MilestoneCelebration';
-import { PageTransition } from '../animations/PageTransition';
+import { motion } from 'framer-motion';
+import { ScrollReveal } from '../animations/ScrollReveal';
+import { AnimatedCard } from '../animations/AnimatedCard';
+import { FloatingParticles } from '../animations/FloatingParticles';
+import { Confetti } from '../animations/Confetti';
+import { staggerContainer, listItem, fadeInUp } from '../../utils/animations/motionVariants';
 
 import { AnimatedLogo } from '../branding/AnimatedLogo';
 import { VAPICard, VAPIText, VAPIButton } from '../ui';
